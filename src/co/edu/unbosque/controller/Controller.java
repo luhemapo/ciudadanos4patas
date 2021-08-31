@@ -1,5 +1,7 @@
 package co.edu.unbosque.controller;
 
-public class Controller {
+import co.edu.unbosque.model.Manager;
 
+public class Controller {
+	Manager m;
 }
