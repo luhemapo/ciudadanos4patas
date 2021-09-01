@@ -7,9 +7,18 @@ import java.util.Scanner;
 import co.edu.unbosque.model.Manager;
 import co.edu.unbosque.model.Pet;
 
+/**
+ * Clase Controller que controla el funcionamiento del programa
+ * @author Luis Martinez, Andres Carbonell
+ *@serial 2021
+ *@version 5.0
+ */
 public class Controller {
-	Manager m;
+	Manager m; // Atributo que renombra la clase Manager
 
+	/**
+	 * Constructor de la clase controller
+	 */
 	public Controller() {
 		try {
 
@@ -22,11 +31,14 @@ public class Controller {
 			menu();
 
 		} catch (FileNotFoundException e) {
-			System.out.println("No encontré el archivo");
+			System.out.println("No encontrï¿½ el archivo");
 			e.printStackTrace();
 		}
 	}
 
+	/**
+	 * Metodo de tipo void que muestra el menu y las diferentes opciones
+	 */
 	public void menu() {
 		String continueMenu = "Y";
 		System.out.println("-------------------------------------");
@@ -47,7 +59,7 @@ public class Controller {
 
 			switch (option) {
 			case "1":
-				System.out.println("Please type the microchip number you´d like to search: ");
+				System.out.println("Please type the microchip number youï¿½d like to search: ");
 				String aux = sc.next();
 				try {
 					Long mc = Long.parseLong(aux);
@@ -69,7 +81,7 @@ public class Controller {
 				break;
 
 			case "2":
-				System.out.println("Please type the species number you´d like to search: \n Type 1.Canino 2.Felino");
+				System.out.println("Please type the species number youï¿½d like to search: \n Type 1.Canino 2.Felino");
 				int noSpecies = sc.nextInt();
 				String species = "";
 				if (noSpecies == 1) {
@@ -83,7 +95,7 @@ public class Controller {
 				break;
 
 			case "3":
-				System.out.println("Please type the pet's neighborhood you´d like to search: ");
+				System.out.println("Please type the pet's neighborhood youï¿½d like to search: ");
 				String neib = sc.next();
 				int contN = m.countByNeighborhood(neib);
 				if (contN == 0) {
@@ -104,7 +116,7 @@ public class Controller {
 					String speciesF = sc.next();
 					System.out.println("Pet's Sex (Macho/Hembra)");
 					String sex = sc.next();
-					System.out.println("Pet's Size:(Miniatura/Pequeño/Mediano/Grande/Gigante)");
+					System.out.println("Pet's Size:(Miniatura/Pequeï¿½o/Mediano/Grande/Gigante)");
 					String size = sc.next();
 					System.out.println("Pet's Potential Dangerous (T/F):");
 					String pDangerous = sc.next();
@@ -133,7 +145,7 @@ public class Controller {
 								}
 								num = num + numb;
 							} else {
-								System.out.println("There´s no registers left");
+								System.out.println("Thereï¿½s no registers left");
 							}
 							System.out.println("Show next " + n + " pets?\nType Y/N");
 							next = sc.next();
