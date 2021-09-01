@@ -4,4 +4,8 @@ import co.edu.unbosque.model.Manager;
 
 public class Controller {
 	Manager m;
+	
+	public Controller() {
+	
+	}
 }

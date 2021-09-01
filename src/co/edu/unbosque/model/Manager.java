@@ -143,5 +143,176 @@ public class Manager {
 		}
 		return null;
 	}
+	public int countBySpecies(String species) {
+		int cont = 0;
+		for(int i=0; i<pets.size();i++) {
+			if(pets.get(i).getSpecies().equalsIgnoreCase(species)) {
+				cont++;
+			}
+		}
+		
+		return cont;
+	}
+
+	public int countByNeighborhood(String neib) {
+		int cont = 0;
+		for(int i=0; i<pets.size();i++) {
+			if(pets.get(i).getNeighborhood().equalsIgnoreCase(neib)) {
+				cont++;
+			}
+		}
+		
+		return cont;
+	}
+
+	public ArrayList<Pet> findByMultipleFields(String sn, String position, String species, String sex,
+			String size, String pd, String neib) {
+		
+		ArrayList <Pet> ans= new ArrayList<Pet>();
+		if (!species.equalsIgnoreCase("n")) {
+			ans=findBySpecies(species);
+		}
+		
+		if (!sex.equalsIgnoreCase("n")) {
+			if(!ans.isEmpty()) {
+				ans=findBySex(sex, ans) ;
+			}else {
+				ans=findBySex(sex, pets) ;
+			}
+		}
+		
+		if (!size.equalsIgnoreCase("n")) {
+			if(!ans.isEmpty()) {
+				ans=findBySize(size, ans) ;
+			}else {
+				ans=findBySize(size, pets) ;
+			}
+		}
+		
+		if (!pd.equalsIgnoreCase("n")) {
+			if(!ans.isEmpty()) {
+				ans=findByPD(pd, ans) ;
+			}else {
+				ans=findByPD(pd, pets) ;
+			}
+		}
+		
+		if (!neib.equalsIgnoreCase("n")) {
+			if(!ans.isEmpty()) {
+				ans=findByNB(neib, ans) ;
+			}else {
+				ans=findByNB(neib, pets) ;
+			}
+		}
+		
+		
+		
+		if (!position.equalsIgnoreCase("n")) {
+			if(!ans.isEmpty()) {
+				ans=findByPosition(position, ans) ;
+			}else {
+				ans=findByPosition(position, pets) ;
+			}
+		}
+		
+		if (!sn.equalsIgnoreCase("n")) {
+			int n = Integer.parseInt(sn);
+			if(!ans.isEmpty()) {
+				ans=findByN(n, ans) ;
+			}else {
+				ans=findByN(n, pets) ;
+			}
+		}
+		
+		
+		return ans;
+	}
+
+	public ArrayList<Pet> findBySpecies(String species ) {
+		ArrayList <Pet> ans= new ArrayList<Pet>();
+		for (int i = 0; i < pets.size(); i++) {
+			if (pets.get(i).getSpecies().equalsIgnoreCase(species)) {
+				ans.add(pets.get(i));
+			}
+		}
+		return ans;
+	}
+	
+	public ArrayList<Pet> findBySex(String sex, ArrayList <Pet> ans) {
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		for (int i = 0; i < ans.size(); i++) {
+			if (ans.get(i).getSex().equalsIgnoreCase(sex)) {
+				ansS.add(ans.get(i));
+			}
+		}
+		return ansS;
+	}
+	public ArrayList<Pet> findBySize(String size, ArrayList <Pet> ans){
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		if(size.equalsIgnoreCase("gigante")) {
+			size="Muy Grande";
+		}
+		for (int i = 0; i < ans.size(); i++) {
+			if (ans.get(i).getSize().equalsIgnoreCase(size)) {
+				ansS.add(ans.get(i));
+			}
+		}
+		return ansS;
+	}
+
+	public ArrayList<Pet> findByPD(String pd, ArrayList <Pet> ans){
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		boolean pdbool=false;
+		if(pd.equalsIgnoreCase("t")) {
+			pdbool=true;
+		}
+		for (int i = 0; i < ans.size(); i++) {
+			if (ans.get(i).getPotentDangerous() == pdbool) {
+				ansS.add(ans.get(i));
+			}
+		}
+		return ansS;
+	}
+	
+	public ArrayList<Pet> findByNB(String neib, ArrayList <Pet> ans ){
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		for (int i = 0; i < ans.size(); i++) {
+			if(ans.get(i).getNeighborhood().equalsIgnoreCase(neib)) {
+				ansS.add(ans.get(i));
+			}
+		}
+		return ansS;
+	}
+public ArrayList<Pet> findByN(int n, ArrayList <Pet> ans ){
+		
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		if(n>ans.size()) {
+			for (int i = 0; i < ans.size(); i++) {
+				ansS.add(ans.get(i));
+			}
+		}else {
+			for (int i = 0; i < n; i++) {
+				ansS.add(ans.get(i));
+			}
+		}
+
+		return ansS;
+	}
+
+	public ArrayList<Pet> findByPosition(String position, ArrayList <Pet> ans ){
+		ArrayList <Pet> ansS= new ArrayList<Pet>();
+		if(position.equalsIgnoreCase("last")) {
+			for (int i = ans.size()-1; i>=0 ; i--) {
+				ansS.add(ans.get(i));
+			}
+		}else {
+			for (int i = 0; i < ans.size(); i++) {
+				ansS.add(ans.get(i));
+			}
+		}
+
+		return ansS;	
+	}
+	
 
 }
