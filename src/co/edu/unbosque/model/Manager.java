@@ -23,6 +23,9 @@ public class Manager {
 		
 		pets = new ArrayList <Pet>();
 	}
+	/**
+	 * Metodo de tipo void utilizado por la libreria "opencsv" realiza la lectura del archivo csv 
+	 */
 	public void uploadData() {
 		try {
 
@@ -56,7 +59,10 @@ public class Manager {
 			System.out.println(e);
 		}
 	}
-	
+	/**
+	 * Metodo de tipo boolean que realiza la validacion del formato del microchip
+	 * @return ans
+	 */
 	public boolean formatValidation (String[]pRow) {
 		boolean ans=true;
 		for(int i=0;i<6;i++) {
@@ -75,6 +81,10 @@ public class Manager {
 
 		return ans;
 	}
+	/**
+	 * Metodo de tipo String que genera el ID
+	 * @return generated
+	 */
 
 	public String idGenerator(int pos, int n) {
 		String psize="";
@@ -100,6 +110,10 @@ public class Manager {
 
 		return generated;
 	}
+	/**
+	 * Metodo de tipo String que obtiene los n ultimos digitos del microchip
+	 * @return mc
+	 */
 
 	public String getNoMicrochip(int actual, int n) {
 		String mc=""+pets.get(actual).getMicrochip();
@@ -111,7 +125,9 @@ public class Manager {
 			System.out.println("Id: "+ pets.get(i).getId());
 		}
 	}
-
+	/**
+	 * Metodo de tipo void que asigna el ID
+	 */
 	public void assignID() {
 		int n=2;
 		for(int i=0;i<pets.size();i++) {
@@ -121,6 +137,9 @@ public class Manager {
 		idTest();
 		System.out.println("Ids Assigned");
 	}
+	/**
+	 * Metodo de tipo void que verifica que el ID no sea repetido
+	 */
 	
 	public void idTest() {
 		for(int i =0;i<pets.size();i++) {
@@ -133,7 +152,11 @@ public class Manager {
 			}
 		}
 	}
-
+	/**
+	 * Metodo de tipo Pet que busca una mascota utilizando el numero de microchip
+	 *@param microchip
+	 * @return null
+	 */
 	public Pet findByMicrochip(Long microchip) {
 		for(int i=0; i<pets.size();i++) {
 			if(pets.get(i).getMicrochip() == microchip) {
