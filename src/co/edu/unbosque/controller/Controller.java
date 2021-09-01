@@ -43,7 +43,7 @@ public class Controller {
 			System.out.println("5.Exit.");
 			Scanner sc = new Scanner(System.in);
 			String option = sc.next();
-			
+
 			switch (option) {
 			case "1":
 				System.out.println("Please type the microchip number you´d like to search: ");
@@ -51,22 +51,36 @@ public class Controller {
 				try {
 					Long mc = Long.parseLong(aux);
 					Pet p = m.findByMicrochip(mc);
-					if(p == null) {
+					if (p == null) {
 						System.out.println("Pet not found");
-					}else {
-						System.out.println("Id: "+p.getId());
-						System.out.println("Microchip: "+p.getMicrochip());
-						System.out.println("Species: "+p.getSpecies());
-						System.out.println("Sex: "+p.getSex());
-						System.out.println("Size: "+p.getSize());
-						System.out.println("Dangerous: "+p.getPotentDangerous());
-						System.out.println("neighborhood: "+p.getNeighborhood());
+					} else {
+						System.out.println("Id: " + p.getId());
+						System.out.println("Microchip: " + p.getMicrochip());
+						System.out.println("Species: " + p.getSpecies());
+						System.out.println("Sex: " + p.getSex());
+						System.out.println("Size: " + p.getSize());
+						System.out.println("Dangerous: " + p.getPotentDangerous());
+						System.out.println("neighborhood: " + p.getNeighborhood());
 					}
-				}catch(Exception e) {
+				} catch (Exception e) {
 					System.out.println("INVALID Microchip");
 				}
 				break;
+
+			case "2":
+				System.out.println("Please type the species number you´d like to search: \n Type 1.Canino 2.Felino");
+				int noSpecies = sc.nextInt();
+				String species = "";
+				if (noSpecies == 1) {
+					species = "CANINO";
+				} else if (noSpecies == 2) {
+					species = "FELINO";
+				} else {
+					System.out.println("Invalid Option");
+				}
+				System.out.println(species + ": " + m.countBySpecies(species));
+				break;
+			}
 		}
 	}
-}
 }
