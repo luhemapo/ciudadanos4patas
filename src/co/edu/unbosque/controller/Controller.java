@@ -1,6 +1,7 @@
 package co.edu.unbosque.controller;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import co.edu.unbosque.model.Manager;
@@ -80,18 +81,85 @@ public class Controller {
 				}
 				System.out.println(species + ": " + m.countBySpecies(species));
 				break;
-				
+
 			case "3":
 				System.out.println("Please type the pet's neighborhood you´d like to search: ");
 				String neib = sc.next();
-				int contN=m.countByNeighborhood(neib);
-				if(contN==0) {
+				int contN = m.countByNeighborhood(neib);
+				if (contN == 0) {
 					System.out.println("There's no pets found in: " + neib);
-				}else {
-					System.out.println("There's "+contN+" pets found in: " + neib);
+				} else {
+					System.out.println("There's " + contN + " pets found in: " + neib);
 				}
 				break;
+			case "4":
+				System.out.println("Please type search parameters: ");
+				System.out.println("If you donn't want to use a certain parameter please type 'N' \n");
+				System.out.println("Number of showed pets:");
+				try {
+					String n = sc.next();
+					System.out.println("Pet's Position (Top/Last):");
+					String position = sc.next();
+					System.out.println("Pet's Species (Canino/Felino):");
+					String speciesF = sc.next();
+					System.out.println("Pet's Sex (Macho/Hembra)");
+					String sex = sc.next();
+					System.out.println("Pet's Size:(Miniatura/Pequeño/Mediano/Grande/Gigante)");
+					String size = sc.next();
+					System.out.println("Pet's Potential Dangerous (T/F):");
+					String pDangerous = sc.next();
+					System.out.println("Pet's Neighborhood:");
+					String neibF = sc.next();
+
+					ArrayList<Pet> petsF = new ArrayList<Pet>();
+
+					petsF = m.findByMultipleFields(n, position, speciesF, sex, size, pDangerous, neibF);
+
+					for (int i = 0; i < petsF.size(); i++) {
+						System.out.println("\n" + petsF.get(i).getPet());
+					}
+					if (!n.equalsIgnoreCase("n")) {
+						System.out.println("Show next " + n + " pets?\nType Y/N");
+						String next = sc.next();
+						int numb = Integer.parseInt(n);
+						int num = Integer.parseInt(n);
+						while (next.equalsIgnoreCase("y")) {
+
+							petsF = m.findByMultipleFields(num + numb + "", position, speciesF, sex, size, pDangerous,
+									neibF);
+							if (petsF.size() - num >= 0) {
+								for (int i = num; i < petsF.size(); i++) {
+									System.out.println("\n" + petsF.get(i).getPet());
+								}
+								num = num + numb;
+							} else {
+								System.out.println("There´s no registers left");
+							}
+							System.out.println("Show next " + n + " pets?\nType Y/N");
+							next = sc.next();
+						}
+					}
+
+					break;
+
+				} catch (Exception e) {
+					System.out.println("Invalid Field");
+					e.printStackTrace();
+				}
+			case "5":
+				continueMenu = "n";
+				break;
+
+			default:
+				System.out.println("Please tipe a valid menu number");
+				System.out.println("Would you like to perform another action? \nType Y/N");
+				continueMenu = sc.next();
 			}
+
 		}
+		System.out.println("-------------------------------------");
+		System.out.println("      Have a nice day =)");
+
 	}
+
 }
