@@ -80,6 +80,17 @@ public class Controller {
 				}
 				System.out.println(species + ": " + m.countBySpecies(species));
 				break;
+				
+			case "3":
+				System.out.println("Please type the pet's neighborhood you´d like to search: ");
+				String neib = sc.next();
+				int contN=m.countByNeighborhood(neib);
+				if(contN==0) {
+					System.out.println("There's no pets found in: " + neib);
+				}else {
+					System.out.println("There's "+contN+" pets found in: " + neib);
+				}
+				break;
 			}
 		}
 	}
