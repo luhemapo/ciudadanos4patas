@@ -4,7 +4,8 @@ package co.edu.unbosque.model;
  * Clase Pet que contiene los atributos de las mascotas 
  * @author Luis Martinez, Andres Carbonell
  *
- */   class Pet {
+ */   
+	public class Pet {
 	 
 	private String id;
 	private long microchip;
