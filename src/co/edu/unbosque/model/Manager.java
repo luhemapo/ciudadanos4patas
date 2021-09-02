@@ -8,7 +8,11 @@ import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
-
+/**
+ * Clase Manager que controla varios aspectos del programa 
+ * @author Luis Martinez, Andres Carbonell
+ *
+ */
 public class Manager {
 
 	private FileReader archCSV = null;
