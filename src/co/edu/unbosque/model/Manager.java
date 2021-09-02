@@ -166,6 +166,12 @@ public class Manager {
 		}
 		return null;
 	}
+	
+	/**
+	 * Metodo de tipo int que cuenta las mascotas por especie
+	 *@param species
+	 * @return cont
+	 */
 	public int countBySpecies(String species) {
 		int cont = 0;
 		for(int i=0; i<pets.size();i++) {
@@ -176,6 +182,11 @@ public class Manager {
 		
 		return cont;
 	}
+	/**
+	 * Metodo de tipo int que cuenta las mascotas por barrio de residencia
+	 *@param neib
+	 * @return cont
+	 */
 
 	public int countByNeighborhood(String neib) {
 		int cont = 0;
@@ -187,6 +198,11 @@ public class Manager {
 		
 		return cont;
 	}
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar una mascota con diferentes parametros de busqueda
+	 *@param sn, position, species, sex, size, pd, neib
+	 * @return ans
+	 */
 
 	public ArrayList<Pet> findByMultipleFields(String sn, String position, String species, String sex,
 			String size, String pd, String neib) {
@@ -250,6 +266,11 @@ public class Manager {
 		
 		return ans;
 	}
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar mascotas por especie
+	 *@param species
+	 * @return ans
+	 */
 
 	public ArrayList<Pet> findBySpecies(String species ) {
 		ArrayList <Pet> ans= new ArrayList<Pet>();
@@ -260,7 +281,11 @@ public class Manager {
 		}
 		return ans;
 	}
-	
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar mascotas por sexo
+	 *@param sex, ans
+	 * @return ansS
+	 */
 	public ArrayList<Pet> findBySex(String sex, ArrayList <Pet> ans) {
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
 		for (int i = 0; i < ans.size(); i++) {
@@ -270,6 +295,12 @@ public class Manager {
 		}
 		return ansS;
 	}
+	
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar mascotas por tamaño
+	 *@param size, ans
+	 * @return ansS
+	 */
 	public ArrayList<Pet> findBySize(String size, ArrayList <Pet> ans){
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
 		if(size.equalsIgnoreCase("gigante")) {
@@ -283,6 +314,11 @@ public class Manager {
 		return ansS;
 	}
 
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar mascotas por el atributo potentially dangerous
+	 *@param pd, ans
+	 * @return ansS
+	 */
 	public ArrayList<Pet> findByPD(String pd, ArrayList <Pet> ans){
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
 		boolean pdbool=false;
@@ -297,6 +333,11 @@ public class Manager {
 		return ansS;
 	}
 	
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de buscar mascotas por barrio de residencia
+	 *@param neib, ans
+	 * @return ansS
+	 */
 	public ArrayList<Pet> findByNB(String neib, ArrayList <Pet> ans ){
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
 		for (int i = 0; i < ans.size(); i++) {
@@ -306,6 +347,12 @@ public class Manager {
 		}
 		return ansS;
 	}
+	
+	/**
+	 * Metodo de ArrayList<Pet> que se encarga de mostrar un numero especifico de mascotas
+	 *@param n, ans
+	 * @return ansS
+	 */
 public ArrayList<Pet> findByN(int n, ArrayList <Pet> ans ){
 		
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
@@ -321,7 +368,11 @@ public ArrayList<Pet> findByN(int n, ArrayList <Pet> ans ){
 
 		return ansS;
 	}
-
+/**
+ * Metodo de ArrayList<Pet> que se encarga de ordenar mascotas de manera ascendente o descendente
+ *@param position, ans
+ * @return ansS
+ */
 	public ArrayList<Pet> findByPosition(String position, ArrayList <Pet> ans ){
 		ArrayList <Pet> ansS= new ArrayList<Pet>();
 		if(position.equalsIgnoreCase("last")) {
